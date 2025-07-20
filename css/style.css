@@ -8,23 +8,27 @@ body {
     color: #fff;
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 0;
     padding: 10px;
     max-height: 100dvh;
-    overflow: hidden;
+    max-width: 100dvw;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 #gameContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    padding-top: 20px;    
+    max-height: 90dvh !important;
+    max-width: 100dvw !important;
 }
 #pongCanvas {
     background: #111;
     border: 3px solid #fff;
     box-shadow: 0 0 30px #000;
     display: block;
-    margin: auto;
+    height: 25rem;
+    width: 100%;
 }
 
 p {
@@ -33,7 +37,6 @@ p {
 p, span {
     font-size: 20px
 }
-
 button {
     background: transparent;
     border: none;
@@ -54,6 +57,25 @@ button:hover {
 #reset {
     color: red;
 }
+#player-label {
+    transform: translate(10rem, -10rem);
+}
+#cpu-label {
+    transform: translate(-10rem, -10rem);
+}
 audio {
     display: none;
+}
+
+@media screen and (max-width: 450px) {
+    #gameContainer {
+        height: 100dvw !important;
+        width: 120dvw !important;
+    }
+    #player-label {
+        transform: translate(5rem, -10rem);
+    }
+    #cpu-label {
+        transform: translate(-5rem, -10rem);
+    }
 }

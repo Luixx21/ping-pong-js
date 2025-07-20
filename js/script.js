@@ -56,6 +56,16 @@ canvas.addEventListener('mousemove', function(e) {
     leftPaddleY = clamp(mouseY - PADDLE_HEIGHT/2, 0, HEIGHT - PADDLE_HEIGHT);
 });
 
+canvas.addEventListener('touchmove', function(e) {
+    e.preventDefault(); // Prevent scrolling on touch
+
+    const rect = canvas.getBoundingClientRect();
+    const touch = e.touches[0]; // Get the first touch point
+    let touchY = touch.clientY - rect.top;
+
+    leftPaddleY = clamp(touchY - PADDLE_HEIGHT / 2, 0, HEIGHT - PADDLE_HEIGHT);
+}, { passive: false }); // passive: false is needed to allow preventDefault
+
 function aiMove() {
     // Basic AI follows the ball but with a maximum speed
     let target = ballY - PADDLE_HEIGHT / 2 + BALL_SIZE / 2;
