@@ -107,9 +107,13 @@ function update() {
     if (ballX + BALL_SIZE < 0) {        
         var score = document.getElementById("cpu-score").innerHTML;
         document.getElementById("cpu-score").innerHTML = Number(score) + 1;
+
+        document.getElementById("audio-fail").play();
     } else if (ballX > WIDTH) {        
         var score = document.getElementById("player-score").innerHTML;
         document.getElementById("player-score").innerHTML = Number(score) + 1;
+
+        document.getElementById("audio-success").play();
     }
 
     // Ball out of bounds (score)
@@ -172,6 +176,8 @@ function increaseLevel() {
 
 function addEventListeners() {
     document.getElementById("start").addEventListener("click", () => {
+        document.getElementById("audio-start").play();
+
         gameLoop();
         addResetButton();
 
@@ -180,7 +186,7 @@ function addEventListeners() {
         });
     });
 }
-
-draw();
-addEventListeners()
-
+addEventListener("DOMContentLoaded", () => {
+    draw();
+    addEventListeners()
+});

@@ -54,3 +54,6 @@ button:hover {
 #reset {
     color: red;
 }
+audio {
+    display: none;
+}
